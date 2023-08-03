@@ -7,7 +7,6 @@ O PyElectroSim é um pacote Python de código aberto que possibilita a criação
 ## Principais Recursos
 
 - Cargas Elétricas: O PyElectroSim permite adicionar cargas elétricas positivas e negativas em uma região de simulação. As cargas podem ser colocadas em posições específicas e ter intensidades configuráveis.
-- Linhas de Campo Elétrico: As simulações geradas mostram as linhas de campo elétrico criadas pelas cargas elétricas, facilitando a visualização do comportamento dos campos elétricos.
 - Campos Magnéticos: Além de cargas elétricas, é possível incluir ímãs e criar campos magnéticos interativos na simulação. Os usuários podem observar a interação entre os campos magnéticos e elétricos.
 - Ajuste de Parâmetros: O PyElectroSim oferece controles intuitivos para ajustar parâmetros como a intensidade das cargas, a direção das correntes elétricas e a força magnética dos ímãs, permitindo a customização das simulações.
 
