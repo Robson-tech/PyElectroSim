@@ -1,0 +1,2 @@
+# robson_package
+ O robson_package é um pacote Python de código aberto que possibilita a criação de simulações interativas de campos eletromagnéticos e cargas elétricas utilizando a biblioteca Pygame. O projeto foi idealizado com o objetivo de fornecer uma ferramenta acessível para estudantes do ensino médio e entusiastas da física explorarem conceitos de eletrostática, eletrodinâmica e eletromagnetismo de maneira prática e visual.
