@@ -1,0 +1,6 @@
+LARGURA = 800
+ALTURA = 600
+FPS = 60
+
+e = 1.6 * 10**(-19)
+RAIO = 5
