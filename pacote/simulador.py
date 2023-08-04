@@ -1,19 +1,19 @@
 from conf import *
+import math
 import pygame as py
 from cargas import Carga
 
 
-class Simulador:
-    def __init__(self):
-        self.largura = LARGURA
-        self.altura = ALTURA
+class TelaSimulador:
+    def __init__(self, largura: int, altura: int):
+        self.largura = largura
+        self.altura = altura
         self.resolucao = (self.largura, self.altura)
         self.tela = py.display.set_mode(self.resolucao)
         py.display.set_caption('Simulador de Campo Elétrico')
         self.relogio = py.time.Clock()
         self.executando = True
-        self.carga1 = Carga(100, 100, RAIO, 1, 'q1')
-        self.carga2 = Carga(200, 200, RAIO, -1, 'q2')
+        self.cargas = []
 
     def iniciar(self):
         py.init()
@@ -30,14 +30,15 @@ class Simulador:
                 self.executando = False
 
     def desenhar(self):
-        self.tela.fill((100, 100, 100))
-        self.carga1.desenhar(self.tela)
-        self.carga2.desenhar(self.tela)
+        self.tela.fill(BACKGROUND_COLOR)
+        for carga in self.cargas:
+            carga.atualizar_posicao(self.cargas, self.largura, self.altura)
+            carga.desenhar(self.tela)
     
     def atualizar(self):
         py.display.update()
 
 
 if __name__ == '__main__':
-    simulador = Simulador()
+    simulador = TelaSimulador(LARGURA, ALTURA)
     simulador.iniciar()
