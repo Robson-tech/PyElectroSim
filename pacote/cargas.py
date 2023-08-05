@@ -3,11 +3,13 @@ import math
 import pygame as py
 
 
-class Carga(py.sprite.Sprite):
+class Carga:
     def __init__(self, x: int, y: int, raio: int, num_eletrons: int, identificador: str = None):
         super().__init__()
-        self.x = x
-        self.y = y
+        self.x_inicial = x
+        self.y_inicial = y
+        self.x = self.x_inicial
+        self.y = self.y_inicial
         self.raio = raio
         self.valor = num_eletrons * e
         self.identificador = identificador
@@ -39,25 +41,27 @@ class Carga(py.sprite.Sprite):
         dx = carga.x - self.x
         dy = carga.y - self.y
         quadrado_distancia = dx ** 2 + dy ** 2
-        if quadrado_distancia >= (self.raio * carga.raio) ** 2:
-            forca_eletrica = k * self.sinal * carga.sinal / quadrado_distancia
+        if quadrado_distancia > (self.raio * 2) ** 2:
+            forca_eletrica = k * self.sinal * carga.sinal * -1 / quadrado_distancia
             angulo = math.atan2(dy, dx)
             forca_x += forca_eletrica * math.cos(angulo)
             forca_y += forca_eletrica * math.sin(angulo)
         return forca_x, forca_y
 
-    def atualizar_posicao(self, cargas: list, largura: int, altura: int):
+    def atualizar_posicao(self, cargas: list):
         forca_total_x = forca_total_y = 0
         for carga in cargas:
             if carga != self:
                 forca_x, forca_y = self.calcular_forca_eletrica(carga)
                 forca_total_x += forca_x
                 forca_total_y += forca_y
-        # self.velocidade_x += forca_total_x / self.massa * ESCALA
-        # self.velocidade_y += forca_total_y / self.massa * ESCALA
-        if (self.x + self.raio < largura and self.x + self.raio > 0) and (self.y + self.raio < altura and self.y + self.raio > 0):
-            self.x += forca_total_x / self.massa * ESCALA
-            self.y += forca_total_y / self.massa * ESCALA
+        self.x += forca_total_x / self.massa * ESCALA
+        self.y += forca_total_y / self.massa * ESCALA
+
+    def resetar(self):
+        self.x = self.x_inicial
+        self.y = self.y_inicial
+        self.velocidade_x = self.velocidade_y = VELOCIDADE_INICIAL
 
 
 if __name__ == '__main__':

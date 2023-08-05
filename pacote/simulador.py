@@ -28,15 +28,25 @@ class TelaSimulador:
         for evento in py.event.get():
             if evento.type == py.QUIT:
                 self.executando = False
-
+            if evento.type == py.MOUSEBUTTONDOWN:
+                for carga in self.cargas:
+                    carga.resetar()
+    
     def desenhar(self):
         self.tela.fill(BACKGROUND_COLOR)
+        self.plano_cartesiano()
         for carga in self.cargas:
-            carga.atualizar_posicao(self.cargas, self.largura, self.altura)
+            carga.atualizar_posicao(self.cargas)
             carga.desenhar(self.tela)
     
     def atualizar(self):
         py.display.update()
+
+    def plano_cartesiano(self):
+        for x in range(0, self.largura, 20):
+            py.draw.line(self.tela, CINZA, (x, 0), (x, self.altura))
+        for y in range(0, self.altura, 20):
+            py.draw.line(self.tela, CINZA, (0, y), (self.largura, y))
 
 
 if __name__ == '__main__':
