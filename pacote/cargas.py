@@ -36,6 +36,9 @@ class Carga:
             texto = fonte.render(self.identificador, True, TEXT_COLOR)
             tela.blit(texto, (self.x + self.raio, self.y + self.raio))
 
+    def distancia(self, carga: 'Carga') -> float:
+        return math.sqrt((carga.x - self.x) ** 2 + (carga.y - self.y) ** 2)
+
     def calcular_forca_eletrica(self, carga: 'Carga') -> tuple:
         forca_x = forca_y = 0
         dx = carga.x - self.x

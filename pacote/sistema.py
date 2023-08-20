@@ -19,8 +19,8 @@ class Sistema:
 
 if __name__ == '__main__':
     sistema = Sistema()
-    q1 = Carga(400, 100, 5, -1, 'q1')
-    q2 = Carga(200, 200, 5, 1, 'q2')
+    q1 = Carga(400, 100, 5, 1, 'q1')
+    q2 = Carga(200, 200, 5, -1, 'q2')
     q3 = Carga(400, 200, 5, 1, 'q3')
     q4 = Carga(400, 100, 5, -1, 'q4')
     q5 = Carga(300, 200, 5, 1, 'q5')
