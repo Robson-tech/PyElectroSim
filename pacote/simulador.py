@@ -1,5 +1,4 @@
 from conf import *
-import math
 import pygame as py
 from cargas import Carga
 

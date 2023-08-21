@@ -18,6 +18,7 @@ class Carga:
         self.massa = MASSA
         self.velocidade_x = VELOCIDADE_INICIAL
         self.velocidade_y = VELOCIDADE_INICIAL
+        self.mover = True
 
     def get_sinal_cor(self):
         sinal = 0
@@ -45,24 +46,21 @@ class Carga:
         dx = carga.x - self.x
         dy = carga.y - self.y
         quadrado_distancia = dx ** 2 + dy ** 2
-        if quadrado_distancia:
+        if self.mover and quadrado_distancia > (self.raio * 2) ** 2:
             forca_eletrica = k * self.sinal * carga.sinal * -1 / quadrado_distancia
             angulo = math.atan2(dy, dx)
             forca_x += forca_eletrica * math.cos(angulo)
             forca_y += forca_eletrica * math.sin(angulo)
+        else:
+            self.mover = False
         return forca_x, forca_y
 
     def atualizar_posicao(self, cargas: list):
-        forca_total_x = forca_total_y = 0
         for carga in cargas:
             if carga != self:
                 forca_x, forca_y = self.calcular_forca_eletrica(carga)
-                # forca_total_x += forca_x
-                # forca_total_y += forca_y
                 self.x += forca_x / self.massa * ESCALA
                 self.y += forca_y / self.massa * ESCALA
-        # self.x += forca_total_x / self.massa * ESCALA
-        # self.y += forca_total_y / self.massa * ESCALA
 
     def resetar(self):
         self.x = self.x_inicial
