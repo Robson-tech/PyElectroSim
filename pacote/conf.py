@@ -18,12 +18,6 @@ MASSA = 1
 VELOCIDADE_INICIAL = 0
 ESCALA = 10 ** -6
 
-# Campos
-CIMA = (0, 0)
-BAIXO = (0, ALTURA + 10)
-ESQUERDA = (0, 0)
-DIREITA = (LARGURA - 10, 0)
-
 # Constantes físicas
 e = 1.6 * 10**(-19)
 k = 9 * 10**9

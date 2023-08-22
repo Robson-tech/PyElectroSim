@@ -7,7 +7,7 @@ O PyElectroSim é um pacote Python de código aberto que possibilita a criação
 ## Principais Recursos
 
 - Cargas Elétricas: O PyElectroSim permite adicionar cargas elétricas positivas e negativas em uma região de simulação. As cargas podem ser colocadas em posições específicas e ter intensidades configuráveis.
-- Ajuste de Parâmetros: O PyElectroSim oferece controles para ajustar parâmetros como a intensidade das cargas, sua posição, seu tamanho e a quantidade (máx. 4), permitindo a customização das simulações.
+- Ajuste de Parâmetros: O PyElectroSim oferece controles para ajustar parâmetros como a posição da carga na simulação dentro de uma plano, o tamanho do raio da esfera que representa a carga no sistema, a intensidade da carga e a sua natureza elétrica (positiva ou negativa), permitindo a customização das simulações.
 
 ## Instalação
 
