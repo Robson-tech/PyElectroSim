@@ -1,10 +1,39 @@
-from conf import *
+from .conf import *
 import pygame as py
-from cargas import Carga
 
 
 class TelaSimulador:
+    """
+    Classe que representa a tela do simulador.
+
+    Attributes
+    ----------
+    largura : int
+        A largura da tela.
+    altura : int
+        A altura da tela.
+    resolucao : tuple
+        A resolução da tela.
+    tela : pygame.Surface
+        A tela do simulador.
+    relogio : pygame.time.Clock
+        O relógio do simulador.
+    executando : bool
+        Indica se o simulador está executando ou não.
+    cargas : list
+        A lista de cargas do simulador.
+    """
     def __init__(self, largura: int, altura: int):
+        """
+        Construtor da classe TelaSimulador.
+
+        Parameters
+        ----------
+        largura : int
+            A largura da tela.
+        altura : int
+            A altura da tela.
+        """
         self.largura = largura
         self.altura = altura
         self.resolucao = (self.largura, self.altura)
@@ -15,6 +44,9 @@ class TelaSimulador:
         self.cargas = []
 
     def iniciar(self):
+        """
+        Inicia o simulador.
+        """
         py.init()
         while self.executando:
             self.relogio.tick(FPS)
@@ -24,6 +56,9 @@ class TelaSimulador:
         py.quit()
     
     def eventos(self):
+        """
+        Trata os eventos do simulador.
+        """
         for evento in py.event.get():
             if evento.type == py.QUIT:
                 self.executando = False
@@ -32,6 +67,9 @@ class TelaSimulador:
                     carga.resetar()
     
     def desenhar(self):
+        """
+        Desenha o simulador.
+        """
         self.tela.fill(BACKGROUND_COLOR)
         self.plano_cartesiano()
         for carga in self.cargas:
@@ -39,9 +77,15 @@ class TelaSimulador:
             carga.desenhar(self.tela)
     
     def atualizar(self):
+        """
+        Atualiza o simulador.
+        """
         py.display.update()
 
     def plano_cartesiano(self):
+        """
+        Desenha o plano cartesiano.
+        """
         for x in range(0, self.largura, 20):
             py.draw.line(self.tela, CINZA, (x, 0), (x, self.altura))
         for y in range(0, self.altura, 20):
